@@ -1,34 +1,61 @@
-# Đồ án Hệ thống nhúng - DE10-Standard SoC Ethernet
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,45:2563eb,100:0f766e&height=190&section=header&text=DE10-Standard%20SoC%20Ethernet&fontSize=42&fontColor=ffffff&animation=fadeIn&desc=HPS%20Linux%20TCP%20FPGA%20Seven-Segment%20Display&descAlignY=68&descSize=18" alt="Banner SVG DE10 Standard SoC Ethernet" />
+</p>
 
-Repo này lưu mã nguồn, tài liệu báo cáo và slide cho đồ án Hệ thống nhúng của nhóm 17 - 22DTV_CLC. Đề tài tập trung xây dựng một hệ thống điều khiển trên board Terasic DE10-Standard Cyclone V SoC FPGA, trong đó máy tính hoặc thiết bị Android gửi chuỗi ký tự qua TCP/Ethernet, phía HPS/Linux trên board tiếp nhận dữ liệu và ghi xuống các ngoại vi FPGA để hiển thị trên LED 7 đoạn.
+<h1 align="center">⚙️ Đồ án Hệ thống nhúng - SoC Ethernet trên DE10-Standard</h1>
 
-## Tài liệu chính
+<p align="center">
+  <a href="https://github.com/lhlizdabezt/DoAnHeThongNhung/releases/latest"><img src="https://img.shields.io/github/v/release/lhlizdabezt/DoAnHeThongNhung?style=for-the-badge&label=Release&color=0f766e" alt="Release mới nhất" /></a>
+  <img src="https://img.shields.io/badge/Board-DE10--Standard-2563eb?style=for-the-badge" alt="Board DE10 Standard" />
+  <img src="https://img.shields.io/badge/SoC-Cyclone%20V-D95319?style=for-the-badge" alt="Cyclone V SoC" />
+  <img src="https://img.shields.io/badge/Network-TCP%2FEthernet-334155?style=for-the-badge" alt="TCP Ethernet" />
+  <img src="https://img.shields.io/badge/GUI-Python%2FTkinter-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Tkinter" />
+</p>
 
-- [Báo cáo đồ án - 17_TH_HTN_22DTV_CLC.pdf](./17_TH_HTN_22DTV_CLC.pdf)
-- [Slide thuyết trình - 17_TH_HTN_22DTV_CLC_presentation.pdf](./17_TH_HTN_22DTV_CLC_presentation.pdf)
-- [Source slide Typst](./17_TH_HTN_22DTV_CLC_presentation.typ)
-- [PowerPoint tổng hợp](./SoC_Ethernet_Integration_Blueprint.pptx)
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=800&size=23&pause=900&color=0F766E&center=true&vCenter=true&width=980&lines=FPGA+SoC+%7C+HPS+Linux+%7C+TCP+Ethernet;PC+and+Android+Client+to+Seven+Segment+Display;Quartus+Platform+Designer+%7C+Python+GUI+%7C+Technical+Report" alt="Dòng chữ SVG chuyển động mô tả đồ án" />
+</p>
 
-## Mục tiêu đồ án
+<p align="center">
+  <img width="31%" src="./de10_standard.jpg" alt="Board Terasic DE10-Standard Cyclone V SoC FPGA" />
+  <img width="31%" src="./board_connections.jpg" alt="Kết nối phần cứng giữa board, mạng Ethernet và thiết bị điều khiển" />
+  <img width="31%" src="./platform_designer.png" alt="Mô hình hệ thống trong Intel Quartus Platform Designer" />
+</p>
 
-- Tích hợp phần cứng HPS/FPGA trên DE10-Standard bằng Intel Quartus Platform Designer.
-- Thiết kế hệ thống nhận lệnh qua Ethernet từ PC/Android tới board.
-- Xây dựng luồng xử lý TCP ở phía HPS/Linux.
-- Ghi dữ liệu nhận được xuống vùng địa chỉ ngoại vi FPGA.
-- Hiển thị chuỗi tối đa 6 ký tự lên LED 7 đoạn.
-- Viết giao diện Python/Tkinter trên PC để nhập IP board, port và nội dung cần gửi.
-- Kiểm thử hệ thống trong mô hình laptop - router - DE10-Standard.
+<p align="center">
+  <img width="760" src="https://raw.githubusercontent.com/lhlizdabezt/lhlizdabezt/main/assets/signal-flow.gif" alt="GIF chuyển động mô tả luồng kỹ thuật từ tín hiệu đến hệ thống" />
+</p>
 
-## Kiến trúc tổng quan
+---
+
+## 🧭 Tóm tắt đồ án
+
+Repo này lưu mã nguồn, tài liệu báo cáo, slide và tài sản minh chứng cho **Đề tài 13 - SoC Ethernet tích hợp hệ thống, firmware và ứng dụng nhận lệnh TCP từ PC** của **Nhóm 17 - 22DTV_CLC**, học phần **Thực hành Hệ thống nhúng**, Khoa **Điện tử - Viễn thông**, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.
+
+Hệ thống dùng board **Terasic DE10-Standard Cyclone V SoC FPGA**. PC hoặc thiết bị Android gửi chuỗi ký tự qua **TCP/Ethernet**, phía **HPS/Linux** trên board tiếp nhận payload, chuẩn hóa dữ liệu, ghi xuống vùng ngoại vi FPGA qua bridge HPS-FPGA và hiển thị kết quả lên cụm **LED 7 đoạn HEX0..HEX5**.
+
+## 🎯 Giá trị kỹ thuật nổi bật
+
+| Năng lực thể hiện | Bằng chứng trong repo | Ý nghĩa khi HR/kỹ sư review |
+| --- | --- | --- |
+| Tích hợp phần cứng và phần mềm | Quartus, Platform Designer, HPS/Linux, PIO, LED 7 đoạn | Cho thấy khả năng nối luồng từ board thật đến phần mềm điều khiển |
+| Giao tiếp mạng nhúng | TCP/IP qua Ethernet, router LAN, PC/Android client | Có tư duy hệ thống, endpoint, request/response và kiểm thử kết nối |
+| Firmware và ứng dụng điều khiển | C/C++, script HPS, Python/Tkinter GUI | Có thể làm từ tầng thấp đến giao diện người dùng |
+| Tài liệu kỹ thuật có thể review | Báo cáo PDF, slide PDF, Typst source, PowerPoint blueprint, release/tag | Repo không chỉ là nơi chứa file, mà là hồ sơ kỹ thuật có cấu trúc |
+
+## 🧩 Kiến trúc tổng quan
 
 ```text
-PC / Android client
+PC GUI / Android client
         |
-        | TCP/IP qua Ethernet LAN
+        | TCP/IP qua Ethernet LAN, cổng dịch vụ 5000
         v
 HPS Linux trên DE10-Standard
         |
-        | Ghi thanh ghi ngoại vi qua lightweight HPS-to-FPGA bridge
+        | Chuẩn hóa payload, phản hồi OK/ERR, ghi thanh ghi ngoại vi
+        v
+Lightweight HPS-to-FPGA bridge
+        |
         v
 FPGA fabric / PIO
         |
@@ -36,20 +63,73 @@ FPGA fabric / PIO
 LED 7 đoạn HEX0 - HEX5
 ```
 
-Hệ thống sử dụng Ethernet làm kênh truyền giữa thiết bị điều khiển và board. Dữ liệu nhận được được chuẩn hóa thành chuỗi ký tự giới hạn, sau đó chuyển thành mã LED 7 đoạn và ghi vào các địa chỉ PIO tương ứng.
+<p align="center">
+  <img width="47%" src="./Python.png" alt="Giao diện Python Tkinter gửi dữ liệu TCP tới board" />
+  <img width="47%" src="./Android.jpg" alt="Ứng dụng Android dùng chung luồng gửi lệnh TCP tới board" />
+</p>
 
-## Công nghệ sử dụng
+## 📦 Tài liệu và artefact chính
 
-- Terasic DE10-Standard, Cyclone V SoC FPGA
-- Intel Quartus Prime và Platform Designer
-- Embedded Linux trên HPS
-- VHDL/HDL cho phần cứng FPGA
-- C/C++ cho phần mềm nhúng và thử nghiệm
-- Python/Tkinter cho giao diện PC
-- TCP/IP qua Ethernet
-- Typst, PowerPoint và PDF cho tài liệu báo cáo
+| Hạng mục | Link | Ghi chú |
+| --- | --- | --- |
+| Báo cáo đồ án | [17_TH_HTN_22DTV_CLC.pdf](./17_TH_HTN_22DTV_CLC.pdf) | Báo cáo học thuật 35 trang, có phân công, kiến trúc, quy trình và minh chứng |
+| Slide bảo vệ | [17_TH_HTN_22DTV_CLC_presentation.pdf](./17_TH_HTN_22DTV_CLC_presentation.pdf) | Slide 16:9 dùng để trình bày luồng PC GUI -> TCP -> HPS Linux -> Bridge -> HEX |
+| Source slide | [17_TH_HTN_22DTV_CLC_presentation.typ](./17_TH_HTN_22DTV_CLC_presentation.typ) | Nguồn Typst để tái dựng slide |
+| PowerPoint blueprint | [SoC_Ethernet_Integration_Blueprint.pptx](./SoC_Ethernet_Integration_Blueprint.pptx) | Bản trình bày kỹ thuật dạng PPTX |
+| Release GitHub | [v1.0.0](https://github.com/lhlizdabezt/DoAnHeThongNhung/releases/tag/v1.0.0) | Đóng gói báo cáo, slide, Typst source và PowerPoint cho người review tải nhanh |
 
-## Cấu trúc thư mục
+## 🧰 Công nghệ sử dụng
+
+| Lớp hệ thống | Công nghệ |
+| --- | --- |
+| Phần cứng | Terasic DE10-Standard, Cyclone V SoC FPGA, LED 7 đoạn HEX0..HEX5 |
+| Thiết kế FPGA | Intel Quartus Prime, Platform Designer, VHDL/HDL, PIO, HPS-FPGA bridge |
+| Hệ điều hành nhúng | Embedded Linux trên HPS, cấu hình Ethernet, shell script |
+| Phần mềm nhúng | C/C++, memory-mapped I/O, xử lý payload, phản hồi OK/ERR |
+| Ứng dụng điều khiển | Python 3, Tkinter GUI, socket TCP, Android client kiểm chứng endpoint |
+| Tài liệu | Typst, PDF, PowerPoint, GitHub release, tag, topic, description |
+
+## 🚀 Chạy nhanh GUI trên PC
+
+Yêu cầu máy tính có **Python 3**.
+
+```powershell
+python DoAn\pc_hex_tcp_pink_gui.py
+```
+
+Trong giao diện, nhập **IP của board DE10-Standard**, cổng TCP mặc định `5000` và chuỗi cần gửi. Payload nên giới hạn tối đa **6 ký tự** để khớp với 6 LED 7 đoạn từ `HEX0` đến `HEX5`.
+
+## 🔌 Cấu hình Ethernet trên board
+
+Trên terminal Linux của DE10-Standard, có thể cấu hình nhanh Ethernet bằng:
+
+```sh
+ifconfig eth0 up
+udhcpc -i eth0
+ifconfig eth0
+```
+
+Sau khi board nhận được địa chỉ IP, nhập IP đó vào GUI trên PC để kiểm tra kết nối và gửi dữ liệu thử nghiệm. Mô hình kiểm thử chính là **laptop - router - DE10-Standard** trong cùng mạng LAN.
+
+## 🛠️ Làm việc với project Quartus
+
+Project Quartus chính nằm tại:
+
+```text
+DoAn/de10_hex_text_ssh_project/hw/quartus/project.qpf
+```
+
+Quy trình build lại:
+
+1. Mở `project.qpf` bằng Intel Quartus Prime.
+2. Mở Platform Designer nếu cần kiểm tra hoặc generate lại hệ thống.
+3. Compile project để sinh bitstream.
+4. Nạp hoặc boot hệ thống trên DE10-Standard theo quy trình trong thư mục `DoAn/de10_hex_text_ssh_project`.
+5. Kiểm tra đường đi dữ liệu từ PC/Android đến HPS/Linux, bridge và LED 7 đoạn.
+
+Các file cache, database, report và bitstream sinh ra từ Quartus đã được bỏ qua trong Git để repo nhẹ hơn, phù hợp public trên GitHub và dễ review.
+
+## 📁 Cấu trúc thư mục
 
 ```text
 .
@@ -67,45 +147,29 @@ Hệ thống sử dụng Ethernet làm kênh truyền giữa thiết bị điề
 └── README.md
 ```
 
-## Chạy GUI trên PC
+## 👥 Thông tin nhóm và tác giả
 
-Yêu cầu máy tính có Python 3.
+| Vai trò | Họ tên | MSSV |
+| --- | --- | --- |
+| Thành viên | Văn Đình Nam | 22207063 |
+| Thành viên | [Lương Hải Long](https://github.com/lhlizdabezt) | 22207056 |
+| Thành viên | Trần Sĩ Nam | 22207062 |
+| Thành viên | Lê Tấn Phi Pha | 22207066 |
+| Thành viên | Vũ Châu Thắng Lợi | 22207055 |
 
-```powershell
-python DoAn\pc_hex_tcp_pink_gui.py
-```
+Giảng viên phụ trách: **ThS. Trần Tuấn Kiệt**, **ThS. Đỗ Quốc Minh Đăng**, **ThS. Nguyễn Như Hoàng**.
 
-Trong giao diện, nhập IP của board DE10-Standard và port TCP, mặc định là `5000`. Nội dung gửi nên có tối đa 6 ký tự để khớp với 6 LED 7 đoạn HEX0 đến HEX5.
+## 🏷️ Chủ đề repo
 
-## Cấu hình Ethernet trên board
+`de10-standard` · `cyclone-v` · `soc-fpga` · `embedded-systems` · `fpga` · `hps-linux` · `tcp-ip` · `ethernet` · `platform-designer` · `quartus` · `vhdl` · `python` · `tkinter` · `seven-segment-display` · `engineering-portfolio`
 
-Trên terminal Linux của DE10-Standard có thể cấu hình nhanh Ethernet bằng:
+## ✅ Phạm vi hoàn thiện
 
-```sh
-ifconfig eth0 up
-udhcpc -i eth0
-ifconfig eth0
-```
+- Có source phần cứng/phần mềm và cấu trúc project rõ ràng.
+- Có GUI PC, luồng Android kiểm chứng và ảnh minh họa hệ thống.
+- Có báo cáo, slide, PowerPoint blueprint, release, tag và metadata GitHub.
+- Tập trung vào prototype học thuật trong mạng LAN cục bộ; chưa mở rộng sang Internet/NAT, bảo mật production hoặc driver kernel riêng.
 
-Sau khi có địa chỉ IP, nhập IP đó vào GUI trên PC để kiểm tra kết nối và gửi dữ liệu thử nghiệm.
-
-## Làm việc với project Quartus
-
-Project Quartus chính nằm trong:
-
-```text
-DoAn/de10_hex_text_ssh_project/hw/quartus/project.qpf
-```
-
-Khi cần build lại:
-
-1. Mở `project.qpf` bằng Intel Quartus Prime.
-2. Mở Platform Designer nếu cần kiểm tra hoặc generate lại hệ thống.
-3. Compile project để sinh bitstream.
-4. Nạp hoặc boot hệ thống trên DE10-Standard theo quy trình trong tài liệu của thư mục `DoAn/de10_hex_text_ssh_project`.
-
-Các file cache, database, report và bitstream sinh ra từ Quartus đã được bỏ qua trong Git để repo nhẹ hơn và phù hợp public trên GitHub.
-
-## Phạm vi repo
-
-Repo này được chuẩn bị cho mục đích học tập ngành Điện tử - Viễn thông, tập trung vào hệ thống nhúng, FPGA SoC, truyền thông Ethernet và ứng dụng điều khiển từ PC/Android. Nội dung chính gồm mã nguồn, project Quartus cần thiết, GUI PC, ảnh minh họa, báo cáo PDF và slide thuyết trình.
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f766e,100:0f172a&height=120&section=footer&text=Embedded%20Systems%20Portfolio&fontSize=24&fontColor=ffffff&animation=twinkling" alt="Footer SVG Embedded Systems Portfolio" />
+</p>
