@@ -1,0 +1,1 @@
+sh /tmp/start_board_tcp_hex_server.sh

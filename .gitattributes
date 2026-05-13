@@ -1,0 +1,25 @@
+* text=auto
+
+.gitattributes text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.v text eol=lf
+*.vhd text eol=lf
+*.sv text eol=lf
+*.typ text eol=lf
+*.md text eol=lf
+*.qpf text eol=lf
+*.qsf text eol=lf
+*.qsys text eol=lf
+*.sdc text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pptx binary
+*.pdf binary
+*.bin binary
+*.img binary

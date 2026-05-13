@@ -1,0 +1,39 @@
+# Workspace/build artifacts
+output/
+scratch/
+scratch_pdf_text.txt
+
+# Unrelated thesis/template bundle copied into this workspace
+Graduation-Thesis-CS-UIT-2025-main/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.bak
+
+# Python local files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node dependencies if deck tooling is installed locally
+node_modules/
+
+# Quartus/Intel FPGA generated outputs
+**/db/
+**/incremental_db/
+**/.qsys_edit/
+**/output_files/
+**/*.rpt
+**/*.summary
+**/*.smsg
+**/*.done
+**/*.qws
+**/*.jdi
+**/*.pin
+**/*.sof
+**/*.pof
+**/*.sld
