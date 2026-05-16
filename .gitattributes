@@ -11,11 +11,13 @@
 *.sv text eol=lf
 *.typ text eol=lf
 *.md text eol=lf
+*.svg text eol=lf
 *.qpf text eol=lf
 *.qsf text eol=lf
 *.qsys text eol=lf
 *.sdc text eol=lf
 
+*.gif binary
 *.png binary
 *.jpg binary
 *.jpeg binary

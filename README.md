@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,45:2563eb,100:0f766e&height=190&section=header&text=DE10-Standard%20SoC%20Ethernet&fontSize=42&fontColor=ffffff&animation=fadeIn&desc=HPS%20Linux%20TCP%20FPGA%20Seven-Segment%20Display&descAlignY=68&descSize=18" alt="Banner SVG DE10 Standard SoC Ethernet" />
+  <img src="assets/soc-ethernet-hero.svg" alt="Banner SVG DE10-Standard SoC Ethernet" />
 </p>
 
 <h1 align="center">⚙️ Đồ án Hệ thống nhúng - SoC Ethernet trên DE10-Standard</h1>
@@ -13,17 +13,11 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=800&size=23&pause=900&color=0F766E&center=true&vCenter=true&width=980&lines=FPGA+SoC+%7C+HPS+Linux+%7C+TCP+Ethernet;PC+and+Android+Client+to+Seven+Segment+Display;Quartus+Platform+Designer+%7C+Python+GUI+%7C+Technical+Report" alt="Dòng chữ SVG chuyển động mô tả đồ án" />
-</p>
-
-<p align="center">
+  <img width="760" src="assets/soc-ethernet-flow.gif" alt="GIF luồng điều khiển SoC Ethernet từ PC/Android đến LED 7 đoạn" />
+  <br />
   <img width="31%" src="./de10_standard.jpg" alt="Board Terasic DE10-Standard Cyclone V SoC FPGA" />
   <img width="31%" src="./board_connections.jpg" alt="Kết nối phần cứng giữa board, mạng Ethernet và thiết bị điều khiển" />
   <img width="31%" src="./platform_designer.png" alt="Mô hình hệ thống trong Intel Quartus Platform Designer" />
-</p>
-
-<p align="center">
-  <img width="760" src="https://raw.githubusercontent.com/lhlizdabezt/lhlizdabezt/main/assets/signal-flow.gif" alt="GIF chuyển động mô tả luồng kỹ thuật từ tín hiệu đến hệ thống" />
 </p>
 
 ---
@@ -42,6 +36,16 @@ Hệ thống dùng board **Terasic DE10-Standard Cyclone V SoC FPGA**. PC hoặc
 | Giao tiếp mạng nhúng | TCP/IP qua Ethernet, router LAN, PC/Android client | Có tư duy hệ thống, endpoint, request/response và kiểm thử kết nối |
 | Firmware và ứng dụng điều khiển | C/C++, script HPS, Python/Tkinter GUI | Có thể làm từ tầng thấp đến giao diện người dùng |
 | Tài liệu kỹ thuật có thể review | Báo cáo PDF, slide PDF, Typst source, PowerPoint blueprint, release/tag | Repo không chỉ là nơi chứa file, mà là hồ sơ kỹ thuật có cấu trúc |
+
+## 🔎 Đường kiểm tra nhanh cho HR và kỹ sư
+
+| Cần kiểm tra | Mở ở đâu | Tín hiệu kỹ thuật |
+| --- | --- | --- |
+| Luồng PC/Android gửi lệnh | `DoAn/pc_hex_tcp_pink_gui.py`, ảnh `Python.png`, `Android.jpg` | GUI và client dùng TCP để gửi chuỗi hiển thị tới board trong LAN |
+| Luồng xử lý trên HPS/Linux | `DoAn/s1.cpp`, `DoAn/s2.cpp`, `DoAn/s3.cpp`, `DoAn/0.txt` | Cấu hình Ethernet, nhận payload, phản hồi trạng thái và chuẩn bị ghi xuống FPGA |
+| Thiết kế FPGA/SoC | `DoAn/de10_hex_text_ssh_project/hw/quartus/project.qpf`, `soc_system.qsys`, `project.vhd` | Platform Designer, PIO, bridge HPS-FPGA và logic điều khiển LED 7 đoạn |
+| Tài liệu bảo vệ | `17_TH_HTN_22DTV_CLC.pdf`, `17_TH_HTN_22DTV_CLC_presentation.pdf` | Có báo cáo, slide, Typst source và PowerPoint blueprint để đối chiếu code với thuyết minh |
+| Bản public review | [release mới nhất](https://github.com/lhlizdabezt/DoAnHeThongNhung/releases/latest) | Có tag, release assets, source snapshot, README tiếng Việt, visual SVG/GIF và topics |
 
 ## 🧩 Kiến trúc tổng quan
 
@@ -76,7 +80,7 @@ LED 7 đoạn HEX0 - HEX5
 | Slide bảo vệ | [17_TH_HTN_22DTV_CLC_presentation.pdf](./17_TH_HTN_22DTV_CLC_presentation.pdf) | Slide 16:9 dùng để trình bày luồng PC GUI -> TCP -> HPS Linux -> Bridge -> HEX |
 | Source slide | [17_TH_HTN_22DTV_CLC_presentation.typ](./17_TH_HTN_22DTV_CLC_presentation.typ) | Nguồn Typst để tái dựng slide |
 | PowerPoint blueprint | [SoC_Ethernet_Integration_Blueprint.pptx](./SoC_Ethernet_Integration_Blueprint.pptx) | Bản trình bày kỹ thuật dạng PPTX |
-| Release GitHub | [v1.0.0](https://github.com/lhlizdabezt/DoAnHeThongNhung/releases/tag/v1.0.0) | Đóng gói báo cáo, slide, Typst source và PowerPoint cho người review tải nhanh |
+| Release GitHub | [release mới nhất](https://github.com/lhlizdabezt/DoAnHeThongNhung/releases/latest) | Đóng gói báo cáo, slide, Typst source, PowerPoint, GIF motion và source snapshot cho người review tải nhanh |
 
 ## 🧰 Công nghệ sử dụng
 
@@ -171,5 +175,6 @@ Giảng viên phụ trách: **ThS. Trần Tuấn Kiệt**, **ThS. Đỗ Quốc M
 - Tập trung vào prototype học thuật trong mạng LAN cục bộ; chưa mở rộng sang Internet/NAT, bảo mật production hoặc driver kernel riêng.
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f766e,100:0f172a&height=120&section=footer&text=Embedded%20Systems%20Portfolio&fontSize=24&fontColor=ffffff&animation=twinkling" alt="Footer SVG Embedded Systems Portfolio" />
+  <b>DE10-Standard · Cyclone V SoC · HPS/Linux · TCP/Ethernet · HPS-FPGA Bridge · HEX0..HEX5</b><br />
+  <samp>Đồ án học phần, đóng gói để người review có thể đi từ README đến code, báo cáo, slide và release.</samp>
 </p>
