@@ -21,7 +21,7 @@ class App(tk.Tk):
         self.ip = tk.StringVar(value="192.168.1.101")
         self.port = tk.StringVar(value="5000")
         self.text_to_send = tk.StringVar(value="HELLO-")
-        self.status_text = tk.StringVar(value="San sang")
+        self.status_text = tk.StringVar(value="Ready")
 
         self.build_style()
         self.build_ui()
@@ -49,7 +49,7 @@ class App(tk.Tk):
         root.pack(fill="both", expand=True)
 
         ttk.Label(root, text="DE10-Standard HEX Text App", style="Title.TLabel").pack(anchor="w")
-        ttk.Label(root, text="PC gui TCP -> board nhan text -> hien len HEX 7-seg", style="Sub.TLabel").pack(anchor="w", pady=(0, 12))
+        ttk.Label(root, text="PC GUI over TCP to board-side text display on HEX seven-segment outputs", style="Sub.TLabel").pack(anchor="w", pady=(0, 12))
 
         top = ttk.Frame(root, style="Main.TFrame")
         top.pack(fill="x", pady=(0, 10))
@@ -60,10 +60,10 @@ class App(tk.Tk):
         right = ttk.Frame(top, style="Card.TFrame", padding=14)
         right.pack(side="left", fill="both", expand=True, padx=(8, 0))
 
-        ttk.Label(left, text="Ket noi TCP", style="CardTitle.TLabel").grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 10))
+        ttk.Label(left, text="TCP Connection", style="CardTitle.TLabel").grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 10))
 
         fields = [
-            ("IP board", self.ip),
+            ("Board IP", self.ip),
             ("Port", self.port),
         ]
 
@@ -83,7 +83,7 @@ class App(tk.Tk):
 
         left.columnconfigure(1, weight=1)
 
-        ttk.Label(right, text="Noi dung hien thi", style="CardTitle.TLabel").pack(anchor="w", pady=(0, 10))
+        ttk.Label(right, text="Display Payload", style="CardTitle.TLabel").pack(anchor="w", pady=(0, 10))
 
         text_entry = tk.Entry(
             right,
@@ -100,19 +100,19 @@ class App(tk.Tk):
 
         ttk.Label(
             right,
-            text="Nhap toi da 6 ky tu. Vi du: HELLO-, ABC123, P-0001",
+            text="Enter up to 6 characters. Examples: HELLO-, ABC123, P-0001",
             style="CardLabel.TLabel"
         ).pack(anchor="w", pady=(0, 10))
 
         action_row = ttk.Frame(right, style="Card.TFrame")
         action_row.pack(fill="x")
-        ttk.Button(action_row, text="Gui text", style="Pink.TButton", command=self.send_text).pack(side="left", padx=(0, 8))
-        ttk.Button(action_row, text="Test ket noi", style="Soft.TButton", command=lambda: self.send_raw("HELLO-")).pack(side="left")
+        ttk.Button(action_row, text="Send Text", style="Pink.TButton", command=self.send_text).pack(side="left", padx=(0, 8))
+        ttk.Button(action_row, text="Test Connection", style="Soft.TButton", command=lambda: self.send_raw("HELLO-")).pack(side="left")
 
         presets = ttk.Frame(root, style="Card.TFrame", padding=14)
         presets.pack(fill="x", pady=(0, 10))
 
-        ttk.Label(presets, text="Mau nhanh", style="CardTitle.TLabel").pack(anchor="w", pady=(0, 10))
+        ttk.Label(presets, text="Quick Presets", style="CardTitle.TLabel").pack(anchor="w", pady=(0, 10))
         preset_row = ttk.Frame(presets, style="Card.TFrame")
         preset_row.pack(fill="x")
 
@@ -126,7 +126,7 @@ class App(tk.Tk):
 
         status = ttk.Frame(root, style="Card.TFrame", padding=14)
         status.pack(fill="x", pady=(0, 10))
-        ttk.Label(status, text="Trang thai", style="CardTitle.TLabel").pack(anchor="w")
+        ttk.Label(status, text="Status", style="CardTitle.TLabel").pack(anchor="w")
         self.status_label = tk.Label(
             status,
             textvariable=self.status_text,
@@ -152,7 +152,7 @@ class App(tk.Tk):
         )
         self.log.pack(fill="both", expand=True)
 
-        self.append("San sang. Nho dam bao board dang chay TCP server o port 5000.")
+        self.append("Ready. Confirm that the board-side TCP server is running on port 5000.")
 
     def append(self, msg):
         self.log.insert("end", msg + "\n")
@@ -176,15 +176,15 @@ class App(tk.Tk):
     def send_raw(self, text):
         def worker():
             try:
-                self.set_status("Dang gui...")
+                self.set_status("Sending...")
                 self.append("> " + text)
                 reply = self.tcp_send(text)
                 self.append("< " + reply.strip())
-                self.set_status("Thanh cong")
+                self.set_status("Success")
             except Exception as e:
-                self.append("LOI: " + str(e))
-                self.set_status("Loi ket noi")
-                messagebox.showerror("TCP loi", str(e))
+                self.append("ERROR: " + str(e))
+                self.set_status("Connection error")
+                messagebox.showerror("TCP Error", str(e))
         threading.Thread(target=worker, daemon=True).start()
 
     def send_text(self):

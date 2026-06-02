@@ -42,12 +42,12 @@ def frame(active):
     draw = ImageDraw.Draw(img)
     draw.rounded_rectangle((24, 22, 936, 318), radius=26, fill=(248, 250, 252))
     draw.text((52, 44), "SoC Ethernet Controller", font=TITLE, fill=(15, 23, 42))
-    draw.text((54, 88), "DE10-Standard Cyclone V: client payload, HPS Linux daemon, FPGA display.", font=SUB, fill=(71, 85, 105))
+    draw.text((54, 88), "DE10-Standard Cyclone V: client payload, HPS Linux server, FPGA display.", font=SUB, fill=(71, 85, 105))
 
     cards = [
         ("PC Client", "Python GUI", (219, 234, 254)),
         ("TCP Port", "LAN 5000", (204, 251, 241)),
-        ("HPS Linux", "C daemon", (254, 249, 195)),
+        ("HPS Linux", "Python server", (254, 249, 195)),
         ("FPGA Bridge", "PIO write", (254, 226, 226)),
         ("HEX Display", "HEX0-HEX5", (233, 213, 255)),
     ]
