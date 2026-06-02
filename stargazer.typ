@@ -178,9 +178,9 @@
         align: (left, left),
         column-gutter: 1.5em,
         row-gutter: 1em,
-        [Học viên thực hiện:],
+        [Presented by:],
         ..info.authors.map(author => text(fill: black, strong(author))),
-        [Người hướng dẫn khoa học:],
+        [Instructors:],
         ..info.instructors.map(instructor => text(fill: black, strong(instructor))),
       )
     ])
@@ -214,7 +214,7 @@
 ///
 /// - numbered (boolean): is whether the outline is numbered. Default is `true`.
 #let outline-slide(
-  title: "Mục lục",
+  title: "Contents",
   numbered: true,
   level: none,
   ..args,
@@ -260,7 +260,7 @@
 ///
 /// - body (none): is the body of the section. It will be passed by touying automatically.
 #let new-section-slide(
-  title: "Mục lục",
+  title: "Contents",
   level: 1,
   numbered: true,
   ..args,

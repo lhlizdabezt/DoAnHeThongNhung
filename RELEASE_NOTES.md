@@ -1,21 +1,22 @@
-# v1.0.6 - Reviewer-Ready English Portfolio Refresh
+# v1.0.7 - Nested Board Guide and Reviewer Safety Refresh
 
 ## Scope
 
-This release refreshes `DoAnHeThongNhung` for US English HR screening, engineering review, seminar review and faculty-style inspection. It expands the README from a short repository summary into a complete reviewer guide with system scope, address map, run instructions, FAQ, release links, profile links and explicit prototype boundaries.
+This release completes the reviewer-facing documentation pass for `DoAnHeThongNhung`. It keeps the US English portfolio README structure from `v1.0.6`, then replaces the old nested Terasic boilerplate README with a project-specific DE10-Standard hardware and HPS Linux guide.
 
 ## Changes
 
-- Rebuilt `README.md` as a complete English reviewer guide for the DE10-Standard SoC Ethernet project.
-- Added concrete system evidence for the PC or Android client, TCP port `5000`, HPS Linux server path, Lightweight HPS-to-FPGA bridge, PIO address map and `HEX0..HEX5` output.
-- Added step-by-step review instructions, PC client run notes, board-side service notes, visual evidence notes, release links, contact links and FAQ.
-- Replaced `assets/soc-ethernet-hero.svg` with a line-free, ASCII-safe English SVG banner.
-- Corrected the GIF render script so the HPS process is labeled as a Python server, matching the committed board-side workflow.
-- Translated visible Python/Tkinter GUI labels and status messages to English.
+- Replaced `DoAn/de10_hex_text_ssh_project/README.md` with a project-specific board guide for Quartus, Platform Designer, HPS Linux, PIO registers and the six-HEX display path.
+- Added nested guide links to the top-level `README.md` so HR, seminar, faculty and engineering reviewers can find the hardware/software integration guide quickly.
+- Documented the exact review path for `soc_system.qsys`, `project.vhd`, `sw/hps/hex_text.sh`, the repository-level TCP server wrappers and the PC client.
+- Added `REPORT_REVIEW_GUIDE.md` as a US English companion to the original course report artifact.
+- Translated and rebuilt `17_TH_HTN_22DTV_CLC_presentation.typ` and `17_TH_HTN_22DTV_CLC_presentation.pdf` into US English.
+- Added direct SD-card, `devmem`, LAN-only and prototype-boundary safety notes.
+- Kept all visible Markdown text in US English and kept SVG assets ASCII-safe.
 
 ## Visual Safety
 
-The featured SVG and GIF assets are designed for GitHub README rendering. They avoid moving connector lines, dotted lines, dashed lines and decorative paths behind text. SVG text is ASCII-safe English to reduce mojibake, blocked glyphs and rendering noise.
+The featured SVG and GIF assets remain designed for GitHub README rendering. They avoid moving connector lines, dotted lines, dashed lines and decorative paths behind text. SVG text is ASCII-safe English to reduce mojibake, blocked glyphs and rendering noise.
 
 ## Review Context
 

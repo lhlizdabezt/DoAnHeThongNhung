@@ -94,9 +94,11 @@ The payload is normalized to a maximum of six characters. Supported display char
 | `DoAn/s2.cpp` | Shell wrapper content that writes the board-side start script |
 | `DoAn/s3.cpp` | Shell command wrapper for starting the board-side service |
 | `DoAn/de10_hex_text_ssh_project/` | DE10-Standard hardware/software project tree with Quartus, Qsys, VHDL, HPS Linux and SD card material |
+| `DoAn/de10_hex_text_ssh_project/README.md` | Board-side hardware and HPS Linux reviewer guide for the nested Quartus/Qsys project |
 | `DoAn/de10_hex_text_ssh_project/hw/hdl/project.vhd` | VHDL top level wiring PIO exports to LEDs and seven-segment displays |
-| `17_TH_HTN_22DTV_CLC.pdf` | Technical report artifact from the original coursework submission |
-| `17_TH_HTN_22DTV_CLC_presentation.pdf` | Presentation artifact for seminar or defense review |
+| `REPORT_REVIEW_GUIDE.md` | US English companion guide for reviewing the original course report evidence |
+| `17_TH_HTN_22DTV_CLC.pdf` | Original Vietnamese technical report artifact preserved as coursework evidence |
+| `17_TH_HTN_22DTV_CLC_presentation.pdf` | Regenerated US English presentation artifact for seminar or defense review |
 | `SoC_Ethernet_Integration_Blueprint.pptx` | PowerPoint blueprint artifact for the system presentation |
 
 ## How To Review the Project
@@ -106,8 +108,10 @@ The payload is normalized to a maximum of six characters. Supported display char
 3. Open `DoAn/pc_hex_tcp_pink_gui.py` to review the PC client, timeout behavior and request/response handling.
 4. Open `DoAn/s1.cpp` to review the server logic, payload normalization and PIO address writes.
 5. Open `DoAn/de10_hex_text_ssh_project/hw/hdl/project.vhd` to verify that the Platform Designer PIO exports reach `HEX0` through `HEX5`.
-6. Review the release page and tags to confirm the repository has stable public snapshots.
-7. Use the FAQ and boundaries below to separate proven prototype behavior from production features not claimed here.
+6. Open `DoAn/de10_hex_text_ssh_project/README.md` for the nested board-project guide, address map, Quartus/Qsys review path and safety notes.
+7. Open `REPORT_REVIEW_GUIDE.md` for a concise US English companion to the original course report artifact.
+8. Review the release page and tags to confirm the repository has stable public snapshots.
+9. Use the FAQ and boundaries below to separate proven prototype behavior from production features not claimed here.
 
 ## How To Run the PC Client
 
@@ -135,6 +139,7 @@ The repository stores the board-side command wrappers under `DoAn/` because the 
 | `DoAn/s1.cpp` | Writes `/tmp/board_tcp_hex_server.py` on the board |
 | `DoAn/s2.cpp` | Writes `/tmp/start_board_tcp_hex_server.sh` on the board |
 | `DoAn/s3.cpp` | Starts the board-side server |
+| `DoAn/de10_hex_text_ssh_project/README.md` | Explains the nested Quartus, Platform Designer, HPS Linux and direct `devmem` review path |
 
 The server listens on `0.0.0.0:5000`, decodes incoming UTF-8 payloads, normalizes unsupported characters to blanks, limits output to six characters, writes six PIO registers with `devmem`, and returns either `OK:<payload>` or `ERR:<reason>`.
 
@@ -212,8 +217,12 @@ Confirm the HPS Linux IP address, confirm the TCP server is listening on port `5
 
 ### Why are there report and presentation files?
 
-They preserve the original coursework evidence and make the repository easier to audit in seminar, faculty and portfolio contexts.
+They preserve the original coursework evidence and make the repository easier to audit in seminar, faculty and portfolio contexts. The original report PDF is preserved as submitted evidence, while `REPORT_REVIEW_GUIDE.md` and the regenerated presentation PDF provide the US English reviewer path.
 
 ## Writing and Review Standard
 
 This README follows an evidence-first professional style: concrete technical nouns, defensible claims, visible source paths, bounded prototype language, release-backed assets and no inflated claims beyond what the repository can support.
+
+The nested DE10-Standard project guide follows the same standard. It separates project-specific evidence from preserved reference-board material so reviewers can inspect the actual six-HEX PIO path without confusing it with generic Terasic boilerplate.
+
+The original Vietnamese course report remains in the repository as source evidence. Current public-facing Markdown, Typst source, SVG text and the regenerated presentation PDF are maintained in US English for reviewer readability.
