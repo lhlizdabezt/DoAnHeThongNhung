@@ -1,23 +1,17 @@
-# Release notes - v1.0.4
+# English Portfolio Refresh
 
-## Điểm chính
+## Main updates
 
-- Sửa `assets/soc-ethernet-hero.svg`: bỏ cụm card chữ `TCP`, `HPS`, `FPGA`, `GUI`, `Bridge`, `HEX` để không còn đè lên tiêu đề banner.
-- Thay cụm card bằng motif mạch không chữ ở góc phải dưới, giữ chuyển động nhẹ nhưng không cạnh tranh với nội dung chính.
-- Giữ bản GIF `assets/soc-ethernet-flow.gif` đã render lại ở `v1.0.3`, trong đó line giữa `FPGA PIO` và `HEX` hiển thị rõ hơn.
-- Giữ README, bảng biểu và chú thích bằng tiếng Việt; riêng SVG vẫn dùng tiếng Anh/ASCII-safe để tránh lỗi hiển thị dấu.
+- Rewrote the public README in English for HR and engineering review.
+- Standardized the repository summary, reviewer map, evidence highlights, scope boundaries and release/tag links.
+- Preserved an evidence-first tone: clear technical nouns, bounded claims and no production ownership beyond the repository material.
 
-## Tài sản review
+## Repository evidence
 
-| Tài sản | Vai trò |
-| --- | --- |
-| `17_TH_HTN_22DTV_CLC.pdf` | Báo cáo đồ án Hệ thống nhúng |
-| `17_TH_HTN_22DTV_CLC_presentation.pdf` | Slide bảo vệ 16:9 |
-| `17_TH_HTN_22DTV_CLC_presentation.typ` | Source Typst để tái dựng slide |
-| `SoC_Ethernet_Integration_Blueprint.pptx` | PowerPoint blueprint kỹ thuật |
-| `soc-ethernet-flow.gif` | GIF mô phỏng luồng PC/Android -> TCP -> HPS Linux -> Bridge -> FPGA PIO -> HEX |
-| `DoAnHeThongNhung-source-v1.0.4.zip` | Source snapshot từ commit phát hành |
+- DE10-Standard / Cyclone V SoC architecture.
+- HPS/Linux TCP server and PC/Android client command flow.
+- PIO-mapped HPS-to-FPGA bridge driving HEX0..HEX5 displays.
 
-## Phạm vi kỹ thuật
+## Scope
 
-Repo này là đồ án học phần Thực hành Hệ thống nhúng của Nhóm 17, 22DTV_CLC. Phạm vi đúng là prototype trong mạng LAN: PC hoặc Android gửi chuỗi qua TCP/Ethernet đến HPS/Linux trên DE10-Standard, sau đó ghi qua bridge HPS-FPGA để hiển thị trên LED 7 đoạn.
+Team coursework prototype for LAN-based embedded-system control. It does not claim internet deployment, production security hardening or a custom kernel driver.
