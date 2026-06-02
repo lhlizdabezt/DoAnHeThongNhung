@@ -1,17 +1,18 @@
-# English Portfolio Refresh
-
-## Main updates
-
-- Rewrote the public README in English for HR and engineering review.
-- Standardized the repository summary, reviewer map, evidence highlights, scope boundaries and release/tag links.
-- Preserved an evidence-first tone: clear technical nouns, bounded claims and no production ownership beyond the repository material.
-
-## Repository evidence
-
-- DE10-Standard / Cyclone V SoC architecture.
-- HPS/Linux TCP server and PC/Android client command flow.
-- PIO-mapped HPS-to-FPGA bridge driving HEX0..HEX5 displays.
+# English Visual Portfolio Refresh - 2026-06-02
 
 ## Scope
 
-Team coursework prototype for LAN-based embedded-system control. It does not claim internet deployment, production security hardening or a custom kernel driver.
+This refresh keeps `DoAnHeThongNhung` aligned with an English-facing engineering portfolio for HR and technical review.
+
+## Changes
+
+- Added an ASCII-safe animated SVG visual under `assets/portfolio-motion.svg`.
+- Embedded the visual in `README.md` for immediate GitHub rendering.
+- Standardized Markdown and binary asset handling through `.gitattributes`.
+- Kept the repository description evidence-first and scoped to: Embedded systems and FPGA/SoC project.
+
+## Review Context
+
+Primary stack: Cyclone V, HPS/Linux, HPS-to-FPGA bridge, TCP/IP, C/C++, Python/Tkinter.
+
+The repository remains bounded to its real artifacts and does not claim production ownership beyond what the source tree, reports, code or release assets can support.
