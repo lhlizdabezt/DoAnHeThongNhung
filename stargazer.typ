@@ -19,7 +19,11 @@
     ),
 
     rect(
-      fill: gradient.linear(self.colors.primary-dark, self.colors.primary.lighten(90%), angle: 90deg),
+      fill: gradient.linear(
+        self.colors.primary-dark,
+        self.colors.primary.lighten(90%),
+        angle: 90deg,
+      ),
       width: 100%,
       height: 4pt,
     ),
@@ -40,7 +44,10 @@
 /// - title (string): The title of the theorem. Default is `none`.
 ///
 /// - it (content): The content of the theorem.
-#let tblock(title: none, it) = touying-fn-wrapper(_tblock.with(title: title, it))
+#let tblock(title: none, it) = touying-fn-wrapper(_tblock.with(
+  title: title,
+  it,
+))
 
 
 /// Default slide function for the presentation.
@@ -111,7 +118,14 @@
     show: setting
     body
   }
-  touying-slide(self: self, config: config, repeat: repeat, setting: new-setting, composer: composer, ..bodies)
+  touying-slide(
+    self: self,
+    config: config,
+    repeat: repeat,
+    setting: new-setting,
+    composer: composer,
+    ..bodies,
+  )
 })
 
 
@@ -164,10 +178,20 @@
       radius: 0.5em,
       breakable: false,
       {
-        text(size: 1.2em, fill: self.colors.neutral-lightest, weight: "bold", info.title)
+        text(
+          size: 1.2em,
+          fill: self.colors.neutral-lightest,
+          weight: "bold",
+          info.title,
+        )
         if info.subtitle != none {
           parbreak()
-          text(size: 1.2em, fill: self.colors.neutral-lightest, weight: "bold", info.subtitle)
+          text(
+            size: 1.2em,
+            fill: self.colors.neutral-lightest,
+            weight: "bold",
+            info.subtitle,
+          )
         }
       },
     )
@@ -178,10 +202,13 @@
         align: (left, left),
         column-gutter: 1.5em,
         row-gutter: 1em,
-        [Presented by:],
+        [Prepared by:],
         ..info.authors.map(author => text(fill: black, strong(author))),
-        [Instructors:],
-        ..info.instructors.map(instructor => text(fill: black, strong(instructor))),
+        [Academic supervisors:],
+        ..info.instructors.map(instructor => text(
+          fill: black,
+          strong(instructor),
+        )),
       )
     ])
 
@@ -214,7 +241,7 @@
 ///
 /// - numbered (boolean): is whether the outline is numbered. Default is `true`.
 #let outline-slide(
-  title: "Contents",
+  title: "Outline",
   numbered: true,
   level: none,
   ..args,
@@ -242,7 +269,8 @@
             ..args.named(),
           ),
         ),
-      ) + args.pos().sum(default: none),
+      )
+        + args.pos().sum(default: none),
     ),
   )
 })
@@ -260,7 +288,7 @@
 ///
 /// - body (none): is the body of the section. It will be passed by touying automatically.
 #let new-section-slide(
-  title: "Contents",
+  title: "Outline",
   level: 1,
   numbered: true,
   ..args,
@@ -274,20 +302,22 @@
 /// Example: `#focus-slide[Wake up!]`
 ///
 /// - align (alignment): is the alignment of the content. The default is `horizon + center`.
-#let focus-slide(align: horizon + center, body) = touying-slide-wrapper(self => {
-  self = utils.merge-dicts(
-    self,
-    config-common(freeze-slide-counter: true),
-    config-page(
-      fill: self.colors.primary,
-      margin: 2em,
-      header: none,
-      footer: none,
-    ),
-  )
-  set text(fill: self.colors.neutral-lightest, weight: "bold", size: 1.5em)
-  touying-slide(self: self, _typst-builtin-align(align, body))
-})
+#let focus-slide(align: horizon + center, body) = touying-slide-wrapper(
+  self => {
+    self = utils.merge-dicts(
+      self,
+      config-common(freeze-slide-counter: true),
+      config-page(
+        fill: self.colors.primary,
+        margin: 2em,
+        header: none,
+        footer: none,
+      ),
+    )
+    set text(fill: self.colors.neutral-lightest, weight: "bold", size: 1.5em)
+    touying-slide(self: self, _typst-builtin-align(align, body))
+  },
+)
 
 
 /// End slide for the presentation.
@@ -380,7 +410,9 @@
   } else {
     self.info.short-title
   },
-  footer-d: context utils.slide-counter.display() + " / " + utils.last-slide-number,
+  footer-d: context utils.slide-counter.display()
+    + " / "
+    + utils.last-slide-number,
   ..args,
   body,
 ) = {
@@ -401,7 +433,11 @@
       if self.store.progress-bar {
         utils.call-or-display(
           self,
-          components.progress-bar(height: 2pt, self.colors.primary, self.colors.neutral-lightest),
+          components.progress-bar(
+            height: 2pt,
+            self.colors.primary,
+            self.colors.neutral-lightest,
+          ),
         )
       },
     )
@@ -414,7 +450,7 @@
       footer: footer,
       header-ascent: 0em,
       footer-descent: 0em,
-      margin: (top: 2.8em, bottom: 1.2em, x: 2.5em),
+      margin: (top: 4.2em, bottom: 1.2em, x: 2.5em),
     ),
     config-common(
       slide-fn: slide,
@@ -423,7 +459,10 @@
     config-methods(
       init: (self: none, body) => {
         set text(size: 20pt)
-        set list(marker: (components.knob-marker(primary: self.colors.primary), [--]))
+        set list(marker: (
+          components.knob-marker(primary: self.colors.primary),
+          [--],
+        ))
         show figure.caption: set text(size: 0.6em)
         show footnote.entry: set text(size: 0.6em)
         show heading: set text(fill: self.colors.primary)
@@ -460,13 +499,28 @@
       footer-b: footer-b,
       footer-c: footer-c,
       footer-d: footer-d,
-      navigation: self => components.simple-navigation(self: self, primary: white, secondary: gray, background: rgb("#042d3d"), logo: utils.call-or-display(self, self.store.footer-d)),
+      navigation: self => components.simple-navigation(
+        self: self,
+        primary: white,
+        secondary: gray,
+        background: rgb("#042d3d"),
+        logo: utils.call-or-display(self, self.store.footer-d),
+      ),
       header: self => if self.store.title != none {
         block(
           width: 100%,
           height: 2em,
           fill: gradient.linear(rgb("#04364A"), rgb("#448C95")),
-          place(left + horizon, text(fill: self.colors.neutral-lightest, weight: "bold", size: 1.3em, utils.call-or-display(self, self.store.title)), dx: 1.5em),
+          place(
+            left + horizon,
+            text(
+              fill: self.colors.neutral-lightest,
+              weight: "bold",
+              size: 1.3em,
+              utils.call-or-display(self, self.store.title),
+            ),
+            dx: 1.5em,
+          ),
         )
       },
       footer: self => {
@@ -477,18 +531,33 @@
           outset: 0mm,
           fill: fill,
           stroke: none,
-          _typst-builtin-align(horizon, text(fill: self.colors.neutral-lightest, it)),
+          _typst-builtin-align(horizon, text(
+            fill: self.colors.neutral-lightest,
+            it,
+          )),
         )
         grid(
           columns: self.store.footer-columns,
           rows: (1.5em, auto),
-          cell(fill: rgb("#04364A"), utils.call-or-display(self, self.store.footer-a)),
-          cell(fill: rgb("#176B87"), utils.call-or-display(self, self.store.footer-c)),
-          cell(fill: rgb("#448C95"), utils.call-or-display(self, self.store.footer-b)),
+          cell(fill: rgb("#04364A"), utils.call-or-display(
+            self,
+            self.store.footer-a,
+          )),
+          cell(fill: rgb("#176B87"), utils.call-or-display(
+            self,
+            self.store.footer-c,
+          )),
+          cell(fill: rgb("#448C95"), utils.call-or-display(
+            self,
+            self.store.footer-b,
+          )),
 
-          cell(fill: rgb("#448C95"), utils.call-or-display(self, self.store.footer-d)),
+          cell(fill: rgb("#448C95"), utils.call-or-display(
+            self,
+            self.store.footer-d,
+          )),
         )
-      }
+      },
     ),
     ..args,
   )

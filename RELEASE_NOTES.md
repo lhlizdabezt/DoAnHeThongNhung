@@ -1,3 +1,26 @@
+# v1.0.8 - English Documentation and Visual QA
+
+## Scope
+
+This release integrates the concurrent reviewer-documentation refresh with an independently rendered English presentation, English desktop-client labels, and a static ASCII-safe system overview.
+
+## Changes
+
+- Preserved the v1.0.7 reviewer guide, nested board documentation, report companion, line-free hero SVG, and line-free flow GIF.
+- Rebuilt and visually inspected the twelve-slide Typst presentation after correcting the checked-in theme margin that caused an address-map slide to intrude into its header.
+- Updated the Python/Tkinter client labels, status messages, and error dialog to US English without changing its TCP behavior.
+- Added `assets/soc-ethernet-flow.svg`, a self-hosted ASCII-English overview with opacity-only motion and no connector or decorative lines behind text.
+- Excluded duplicate presentation PDFs, local render checks, archive copies, and bundled system fonts from the public repository.
+
+## Verification
+
+- `typstyle --check` passed for the presentation and theme source.
+- The regenerated PDF has twelve rendered pages; visual checks covered the title, architecture, hardware, address-map, firmware, client, test, results, limits, and conclusion slides.
+- Python syntax compilation passed for `DoAn/pc_hex_tcp_pink_gui.py`.
+- The static SVG is ASCII-only, renders without clipping, and uses no `path`, `line`, dotted, or dashed connector elements.
+
+---
+
 # v1.0.7 - Nested Board Guide and Reviewer Safety Refresh
 
 ## Scope

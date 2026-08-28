@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 320" role="img" aria-labelledby="title desc">
+  <title id="title">DE10 Standard SoC Ethernet control path</title>
+  <desc id="desc">Five animated, non-overlapping stages show the control path from a client to the seven-segment display.</desc>
+  <rect width="1400" height="320" rx="24" fill="#0B1220"/>
+  <text x="56" y="52" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">DE10 STANDARD SOC ETHERNET CONTROL PATH</text>
+  <text x="56" y="82" fill="#94A3B8" font-family="Arial, sans-serif" font-size="16">LAN prototype with a six-character command contract</text>
+  <g font-family="Arial, sans-serif">
+    <g>
+      <rect x="48" y="112" width="244" height="154" rx="16" fill="#12374B" stroke="#22D3EE" stroke-width="2"/>
+      <rect x="62" y="126" width="216" height="126" rx="12" fill="#0E7490" opacity="0.42">
+        <animate attributeName="opacity" values="0.26;0.72;0.26" dur="5s" begin="0s" repeatCount="indefinite"/>
+      </rect>
+      <text x="170" y="175" text-anchor="middle" fill="#E0F2FE" font-size="28" font-weight="700">PC OR ANDROID</text>
+      <text x="170" y="209" text-anchor="middle" fill="#BAE6FD" font-size="17">CLIENT</text>
+      <text x="170" y="237" text-anchor="middle" fill="#BAE6FD" font-size="15">TCP COMMAND</text>
+    </g>
+    <g>
+      <rect x="314" y="112" width="244" height="154" rx="16" fill="#104338" stroke="#2DD4BF" stroke-width="2"/>
+      <rect x="328" y="126" width="216" height="126" rx="12" fill="#0F766E" opacity="0.42">
+        <animate attributeName="opacity" values="0.26;0.72;0.26" dur="5s" begin="1s" repeatCount="indefinite"/>
+      </rect>
+      <text x="436" y="175" text-anchor="middle" fill="#CCFBF1" font-size="28" font-weight="700">TCP SERVICE</text>
+      <text x="436" y="209" text-anchor="middle" fill="#99F6E4" font-size="17">PORT 5000</text>
+      <text x="436" y="237" text-anchor="middle" fill="#99F6E4" font-size="15">REQUEST RESPONSE</text>
+    </g>
+    <g>
+      <rect x="580" y="112" width="244" height="154" rx="16" fill="#193D23" stroke="#4ADE80" stroke-width="2"/>
+      <rect x="594" y="126" width="216" height="126" rx="12" fill="#15803D" opacity="0.42">
+        <animate attributeName="opacity" values="0.26;0.72;0.26" dur="5s" begin="2s" repeatCount="indefinite"/>
+      </rect>
+      <text x="702" y="175" text-anchor="middle" fill="#DCFCE7" font-size="28" font-weight="700">HPS LINUX</text>
+      <text x="702" y="209" text-anchor="middle" fill="#BBF7D0" font-size="17">NORMALIZE TEXT</text>
+      <text x="702" y="237" text-anchor="middle" fill="#BBF7D0" font-size="15">SIX CHARACTERS</text>
+    </g>
+    <g>
+      <rect x="846" y="112" width="244" height="154" rx="16" fill="#4A2415" stroke="#F59E0B" stroke-width="2"/>
+      <rect x="860" y="126" width="216" height="126" rx="12" fill="#B45309" opacity="0.42">
+        <animate attributeName="opacity" values="0.26;0.72;0.26" dur="5s" begin="3s" repeatCount="indefinite"/>
+      </rect>
+      <text x="968" y="175" text-anchor="middle" fill="#FEF3C7" font-size="28" font-weight="700">FPGA BRIDGE</text>
+      <text x="968" y="209" text-anchor="middle" fill="#FDE68A" font-size="17">PIO REGISTERS</text>
+      <text x="968" y="237" text-anchor="middle" fill="#FDE68A" font-size="15">HPS TO FPGA</text>
+    </g>
+    <g>
+      <rect x="1112" y="112" width="240" height="154" rx="16" fill="#242660" stroke="#818CF8" stroke-width="2"/>
+      <rect x="1126" y="126" width="212" height="126" rx="12" fill="#4F46E5" opacity="0.42">
+        <animate attributeName="opacity" values="0.26;0.72;0.26" dur="5s" begin="4s" repeatCount="indefinite"/>
+      </rect>
+      <text x="1232" y="175" text-anchor="middle" fill="#E0E7FF" font-size="28" font-weight="700">HEX DISPLAY</text>
+      <text x="1232" y="209" text-anchor="middle" fill="#C7D2FE" font-size="17">HEX0 TO HEX5</text>
+      <text x="1232" y="237" text-anchor="middle" fill="#C7D2FE" font-size="15">PHYSICAL OUTPUT</text>
+    </g>
+  </g>
+</svg>

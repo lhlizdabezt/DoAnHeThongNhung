@@ -6,6 +6,10 @@ scratch_pdf_text.txt
 # Unrelated thesis/template bundle copied into this workspace
 Graduation-Thesis-CS-UIT-2025-main/
 
+# Local presentation working package. The root source and final PDF are tracked;
+# this expanded copy contains duplicate PDFs, local render QA, and system fonts.
+17_TH_HTN_22DTV_CLC_presentation/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
